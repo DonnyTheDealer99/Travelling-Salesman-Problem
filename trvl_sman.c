@@ -13,7 +13,6 @@ int calculate_distance(struct City current, struct City other){
     int y_coords = power((other.y_coord - current.y_coord), 2);
 
     double final_dist = sqrt(x_coords + y_coords);
-
     int final = final_dist;
 
     return final;
@@ -25,7 +24,7 @@ int closest_neighbour(int current_city, struct City list_of_cities[MAX_CITIES], 
     int closest_city = current_city;
 
     for(int i = 0; i < MAX_CITIES; i++){
-        if(i != current_city){ //Ensures we don't calculate distance to itself
+        if(i != current_city && i != 0){ //Ensures we don't calculate distance to itself
             int distance = calculate_distance(list_of_cities[current_city], list_of_cities[i]);
             if(distance < sml_dist && cities_visited[i] == -1){
                 sml_dist = distance;
@@ -59,13 +58,15 @@ int main(){
         printf("City: %d, X: %d, Y: %d\n", c.id, c.x_coord, c.y_coord);
     }
 
+    int current_city = 0; // Sets starting point to '0'
     for(int i = 0; i < MAX_CITIES; i++){
-        printf("%d\n", closest_neighbour(i, list_of_cities, cities_visited));
+        if(i == (MAX_CITIES - 1)){
+            printf("0\n");
+        } else {
+            current_city = closest_neighbour(current_city, list_of_cities, cities_visited);
+            printf("%d\n", current_city);
+        }   
     }
-
-    printf("%d\n", closest_neighbour(0, list_of_cities, cities_visited));
-    // printf("%d\n", closest_neighbour(closest_neighbour(0, list_of_cities), list_of_cities));
-    // printf("%d\n", closest_neighbour(3, list_of_cities));
 
     return 0;
 }

@@ -37,6 +37,11 @@ int closest_neighbour(int current_city, struct City list_of_cities[MAX_CITIES], 
     return closest_city;
 }
 
+int generate_random_num(){
+    
+    return rand() % MAX_RANGE;
+}
+
 int main(){
     srand(time(NULL));
 
@@ -46,8 +51,8 @@ int main(){
     for(int i = 0; i < MAX_CITIES; i++){
         struct City city;
         city.id = i;
-        city.x_coord = rand() % 20;
-        city.y_coord = rand() % 20;
+        city.x_coord = generate_random_num();
+        city.y_coord = generate_random_num();
         list_of_cities[i] = city;
 
         cities_visited[i] = -1;

@@ -4,7 +4,8 @@
 #include <limits.h>
 #include <math.h>
 
-#define MAX_CITIES 5
+#define MAX_CITIES 10
+#define MAX_RANGE 10
 
 struct City{
     int id;

@@ -6,6 +6,7 @@
 
 #define MAX_CITIES 10
 #define MAX_RANGE 10
+#define STARTING_CITY 0 // Sets starting point to '0'
 
 struct City{
     int id;

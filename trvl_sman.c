@@ -37,10 +37,7 @@ int closest_neighbour(int current_city, struct City list_of_cities[MAX_CITIES], 
     return closest_city;
 }
 
-int generate_random_num(){
-    
-    return rand() % MAX_RANGE;
-}
+int generate_random_num(){return rand() % MAX_RANGE;}
 
 int main(){
     srand(time(NULL));
@@ -63,13 +60,15 @@ int main(){
         printf("City: %d, X: %d, Y: %d\n", c.id, c.x_coord, c.y_coord);
     }
 
-    int current_city = 0; // Sets starting point to '0'
+    int current_city = STARTING_CITY; 
     for(int i = 0; i < MAX_CITIES; i++){
         if(i == (MAX_CITIES - 1)){
-            printf("0\n");
+            printf("%d\n", STARTING_CITY);
+        } else if(i == 0){
+            printf("%d -->", STARTING_CITY);
         } else {
             current_city = closest_neighbour(current_city, list_of_cities, cities_visited);
-            printf("%d\n", current_city);
+            printf("%d -->", current_city);
         }   
     }
 
